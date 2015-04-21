@@ -1,0 +1,1 @@
+KISSY.config("requires",{"kg/tae-sku/1.0.0/index":["node","base","event"],"kg/tae-sku/1.0.0/lib/main":["node","base"]});

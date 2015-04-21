@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>TaeSku的demo</title>
+    <link rel="stylesheet" type="text/css" href="http://g.tbcdn.cn/tb/??global/3.3.4/global-min.css,item/1.9.6/index-min.css">
+    <script src="//g.alicdn.com/kissy/k/1.4.8/seed-min.js" charset="utf-8"></script>
+    <style type="text/css">
+    .text-sku{
+        margin: 0;
+        padding: 0;
+        width: 48px;
+        height: 26px;
+        font-size: 16px;
+        line-height: 26px;
+        text-align: center;
+        color: #666;
+        border: 1px solid #CCC;
+        outline: 0;
+        background: #FFF;
+        position: absolute;
+    }
+    </style>
+</head>
+<body>
+<h2>TaeSku的demo</h2>
+<div id="bd">
+    <div id="detail">
+        <div class="tb-key">
+            <dl class="tb-amount tb-clearfix">
+                <dd>
+                <span class="tb-stock" id="J_Stock">
+                    <a href="#" hidefocus="" class="tb-reduce J_Reduce tb-iconfont">ƛ</a><input id="J_IptAmount" type="text" class="tb-text" value="1" maxlength="8" title="请输入购买量"><a href="#" hidefocus="" class="tb-increase J_Increase tb-iconfont ">ƚ</a>件
+                </span>
+                <em>(库存<span id="J_SpanStock" class="tb-count">379&#40;</span>件)</em>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<script>
+    var S = KISSY;
+    if (S.Config.debug) {
+        var debugPath = "http://localhost:5555/";
+        S.config({
+            packages:[
+                {
+                    name:"kg/tae-sku/1.0.0",
+                    path:debugPath,
+                    charset:"utf-8",
+                    ignorePackageNameInUri: true
+                }
+            ]
+        });
+    }
+
+    S.use('node, kg/tae-sku/1.0.0/index', function (S, Node, TaeSku) {
+        var $ = Node.all;
+
+        var sku = new TaeSku({
+            node: '#J_IptAmount'
+        });
+
+        $('.tb-increase').on('click',function(){
+            sku.plus();
+        })
+
+        $('.tb-reduce').on('click',function(){
+            sku.minus();
+        })
+    })
+</script>
+</body>
+</html>
+
